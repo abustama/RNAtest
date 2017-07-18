@@ -18,8 +18,7 @@ NREADS=2
 
 # List of FASTQ files; must be named _1 _2 for paired-end,
 # unrestricted for unpaired
-SRR980481_1.fastq.gz
-SRR980481_2.fastq.gz
+FASTQ_FILES=SRR980481_1.fastq.gz SRR980481_2.fastq.gz
 
 
 # Everything else below is optional
@@ -56,12 +55,12 @@ ENSEMBL_GENOME=GRCh38
 
 ## The ensembl release to use (new releases of this workflow will use
 ## newer revisions, so specify it.
-ENSEMBL_RELEASE=84
+ENSEMBL_RELEASE=89
 
 ## Whether to strip out patches or not; probably only useful for Homo
 ## Sapiens
 STRIP_PATCHES=1
-# STRIP_PATCHES_SCRIPT=./rnaseq_workflow/strip_patches.pl
+STRIP_PATCHES_SCRIPT=./rnaseq_workflow/strip_patches.pl
 STRIP_PATCHES_OPTIONS=--valid-chr='^(?:chr)?[12]?\d|MT|[XY]$$'
 
 # Options for cufflinks; --max-bundle-frags avoids HIDATA errors
@@ -69,3 +68,4 @@ STRIP_PATCHES_OPTIONS=--valid-chr='^(?:chr)?[12]?\d|MT|[XY]$$'
 
 # If you do not wish to trim, uncomment the following
 # NOTRIM=1
+TRIMMOMATIC_OPTIONS?=ILLUMINACLIP:$(TRIMMOMATIC_FASTA_PATH)/TruSeq2-SE.fa:2:20:10
